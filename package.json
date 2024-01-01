@@ -6,7 +6,7 @@
           "build": "tsc",
           "start": "node ./build/index.js",
           "dev": "nodemon",
-          "start:build": "tsc && nodemon ./build/index.js"
+          "start:build": "tsc && node ./build/index.js"
      },
      "keywords": [],
      "author": "",
