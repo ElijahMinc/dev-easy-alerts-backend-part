@@ -1,0 +1,1 @@
+export { default as DepartmentModel } from './Department'

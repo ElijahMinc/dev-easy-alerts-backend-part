@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                                  /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */
+    "module": "CommonJS",                                /* Specify what module code is generated. */
+                                /* Specify the root folder within your source files. */
+    "moduleResolution": "Node",                       /* Specify how TypeScript looks up a file from a given module specifier. */
+    "baseUrl": "./src/index.ts",                                  /* Specify the base directory to resolve non-relative module names. */                             /* Disallow `import`s, `require`s or `<reference>`s from expanding the number of files TypeScript should add to a project. */
+    "resolveJsonModule": true,
+    /* JavaScript Support */
+    "allowJs": true,                                  /* Allow JavaScript files to be a part of your program. Use the `checkJS` option to get errors from these files. */                                 /* Specify a file that bundles all outputs into one JavaScript file. If `declaration` is true, also designates a file that bundles all .d.ts output. */
+    "outDir": "./build",                                   /* Specify an output folder for all emitted files. */                         /* Disable emitting comments. */
+    "noEmit": false,                                   /* Disable emitting files from a compilation. */                             /* Specify the location where debugger should locate map files instead of generated locations. */
+    "inlineSourceMap": true,                          /* Include sourcemap files inside the emitted JavaScript. */
+    "esModuleInterop": true,                             /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables `allowSyntheticDefaultImports` for type compatibility. */
+    "forceConsistentCasingInFileNames": true,            /* Ensure that casing is correct in imports. */                   /* Skip type checking .d.ts files that are included with TypeScript. */
+    "skipLibCheck": true,                           /* Skip type checking all .d.ts files. */
+  },
+  "exclude": [ "node_modules", "build"],
+  "include": ["src/**/*"]
+}
