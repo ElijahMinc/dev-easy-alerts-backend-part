@@ -1,16 +1,8 @@
-import { UserDTO } from './../../dto/UserDTO';
+import mongoose from "mongoose";
 import { NextFunction, Request, Response } from "express";
-import { generateJWTToken } from "../../utils/generateJWTToken";
 import { validationResult } from "express-validator";
 import { ApiError } from "../../services/ErrorService";
-import {v4 as uuidV4} from 'uuid'
-import { verifyPassword } from "../../utils/verifyPassword";
-import { generateHashPassword } from "../../utils/genereateHashPassword";
 import { userService } from "../../services/UserService";
-import User from "../../modules/User/User";
-import { UserModel } from "../../modules";
-import { Roles } from '../../constants';
-import { Schema } from 'mongoose';
 import { getDataWithoutNullable } from '../../utils/getDataWithoutNullable';
 import { alertConfigService } from '../../services/AlertConfigService';
 import { AuthRequest } from '../../types/global.interface';
@@ -106,8 +98,14 @@ export class UserController {
 
          const { firstName, lastName, email, departmentId } = req.body
 
+         const isMongoObjectIdDepartmentId = mongoose.Types.ObjectId.isValid(departmentId);
+
+         if(!isMongoObjectIdDepartmentId){
+            return next(ApiError.BadRequest('Invalid departmentId'))
+         }
+
          const dataWithoutNullableValues = getDataWithoutNullable({ firstName, lastName, email, departmentId}) as any
-         const dispatcherId = req.params.dispatcherId as any
+         const dispatcherId = mongoose.Types.ObjectId.isValid(req.params.dispatcherId) ? req.params.dispatcherId : ''
 
          if(!dispatcherId){
             return next(ApiError.BadRequest('No dispatcherId specified'))
