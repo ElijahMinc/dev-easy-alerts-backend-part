@@ -36,6 +36,7 @@ class TokenService {
             const decipher = crypto.createDecipheriv(process.env.ECNRYPTION_CRYPTO_METHOD, key, encryptionIV)
             const result = decipher.update(buff.toString('utf8'), 'hex', 'utf8') +
             decipher.final('utf8') // Decrypts data and converts to utf8
+
             return resolve(result)
          } catch (error) {
             return reject(error)
@@ -68,9 +69,9 @@ class TokenService {
       return new Promise(async (resolve, reject) => {
 
          try {
-            const decodedPassword = await this.decryptPassword(encryptPassword);
+            const decryptedPassword = await this.decryptPassword(encryptPassword);
 
-            return resolve(inputPassword === decodedPassword)
+            return resolve(inputPassword === decryptedPassword)
          } catch (error) {
             return reject(error)
          }
